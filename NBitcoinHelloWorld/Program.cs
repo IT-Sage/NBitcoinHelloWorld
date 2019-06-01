@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NBitcoin;
+using System;
 
 namespace NBitcoinHelloWorld
 {
@@ -6,7 +7,10 @@ namespace NBitcoinHelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Key privateKey = new Key();
+            PubKey publicKey = privateKey.PubKey;
+            Console.WriteLine(publicKey.GetAddress(ScriptPubKeyType.Legacy,Network.Main));            
+            Console.WriteLine(publicKey.GetAddress(ScriptPubKeyType.Segwit,Network.TestNet));
         }
     }
 }
